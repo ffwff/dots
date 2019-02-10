@@ -1,0 +1,41 @@
+#
+# /etc/bash.bashrc
+#
+
+set_transparent() {
+    if [ "x$DISPLAY" != "x" ] && [ "x$WINDOWID" != "x" ]; then
+        transset-df --id "$WINDOWID" 0.7 >/dev/null 2>/dev/null
+        xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id "$WINDOWID" 2>/dev/null
+    fi
+}
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='\[$(tput bold)\]\u \w>\[$(tput sgr0)\] '
+
+[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+[ -r ~/.bash_aliases ] && . ~/.bash_aliases
+[ -f ~/.bash_secrets ] && . ~/.bash_secrets
+
+export HISTCONTROL=ignoredupssource
+export LD_LIBRARY_PATH="/usr/local/lib"
+
+eval $(keychain --eval id_rsa -Q -q)
+
+[[ -n "$SSH_CLIENT" ]] && return
+
+
+if [ -z "$TMUX" ]; then
+  if [[ "$(pgrep xterm | wc -l)" -eq 1 ]] && [[ ! -z "$(pidof tmux)" ]]; then
+    set_transparent
+    exec tmux attach
+  else
+    exec tmux
+  fi
+fi
+[[ $DISPLAY ]] && shopt -s checkwinsize
+
+shopt -s cdspell autocd
+
+#set_transparent

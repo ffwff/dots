@@ -1,0 +1,85 @@
+#include ".cache/wal/colors.Xresources"
+
+
+!URxvt*background: black
+!URxvt*foreground: white
+
+UXTerm*locale: True
+UXTerm*renderFont: True
+UXTerm*faceName: FantasqueSansMono
+UXTerm*faceSize: 14
+UXTerm*preedit: True
+UXTerm*xftAntialias: True
+URxvt.iso14755: false
+
+UXTerm*trimSelection: true
+UXTerm*eightBitInput:false
+
+UXTerm*translations: #override \
+    Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD) \n\
+
+UXTerm*borderWidth: 0
+UXTerm*internalBorder: 20
+
+! URXVT
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+URxvt.termName: rxvt-unicode
+URxvt.scrollBar: false
+URxvt.font:             xft:inconsolata:size=14
+URxvt.boldFont:         xft:inconsolata:size=14:weight=bold
+URxvt*letterSpace: -1
+URxvt.depth: 32
+
+URxvt.keysym.Home:          \033[1~
+URxvt.keysym.End:           \033[4~
+URxvt.keysym.Control-Up:    \033[1;5A
+URxvt.keysym.Control-Down:  \033[1;5B
+URxvt.keysym.Control-Left:  \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+
+URxvt*internalBorder: 10
+
+URxvt.perl-ext-common: default,selection-to-clipboard,matcher
+URxvt.url-launcher:   firefox
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1
+
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+
+URxvt*geometry:90x24
+
+! URxvt.highlightColor: #000000
+! URxvt.highlighTextColor: #FFFFFF
+
+! Rofi
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #ffffff, #a89984, #668799
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #ffffff, #000000, #eff9ff, #668799, #ffffff
+rofi.color-active: #ffffff, #000000, #eff9ff, #668799, #ffffff
+rofi.color-urgent: #ffffff, #000000, #eff9ff, #668799, #668799
+! Misc
+rofi.font: inconsolata 13
+rofi.lines: 15
+rofi.width: 50
+rofi.separator-style: solid
+rofi.sidebar-mode: true
+rofi.combi-modi: window,run
+rofi.modi: combi,keys
+rofi.kb-clear-line: Control+d
+rofi.kb-remove-char-forward: Delete
+
+!wallpaper: /home/user/Pictures/Kobayashi4k.jpg
+
+! Dpi
+Xft.dpi: 86
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.antialias: 1
+Xft.rgba: rgb

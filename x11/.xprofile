@@ -1,0 +1,13 @@
+#!/bin/bash
+
+XDG_SESSION_TYPE="x11"
+export XDG_SESSION_TYPE
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_LOGGIN_RULES="qt5ct.debug=false"
+[[ -f ~/.cache/wal/colors.Xresources ]] && xrdb -merge ~/.cache/wal/colors.Xresources
+export allow_rgb10_configs=false
+xset b off

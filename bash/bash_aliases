@@ -1,0 +1,44 @@
+alias to="tmux detach -a"
+alias sudo="sudo "
+alias su="sudo su "
+
+alias grep="rg"
+alias fgrep="rg"
+alias egrep="rg"
+alias find="fd"
+
+alias xclip="xclip -selection clipboard"
+alias cclip="echo|xclip"
+
+alias mkdir="mkdir -vp"
+alias md="mkdir"
+alias rm="/bin/rm -ir --"
+alias rmf="/bin/rm -fr --"
+alias cp="cp -r"
+alias cat="cat -v"
+alias l="ls"
+alias pkill="pkill -x"
+
+alias n="micro"
+alias m="make"
+
+alias mail="mutt"
+alias server='python2 -m SimpleHTTPServer'
+ftpserver() {
+    uftpd -l notice -n `pwd` -oftp=2021,writable
+}
+alias sshserver="/usr/bin/sshd -Df ~/.ssh/sshd_config"
+alias 8="ping 8.8.8.8"
+
+alias dmesg='dmesg --color=always'
+alias reboot="sudo reboot"
+
+alias mpv.conf="n ~/.config/mpv/mpv.conf"
+
+alias lock="qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
+
+logout() {
+    session=`loginctl session-status | head -n 1 | awk '{print $1}'`
+    loginctl terminate-session $session
+    pkill -9 -u $USER
+}
