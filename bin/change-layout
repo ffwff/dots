@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ "$1" = "fourbox" ]]; then
+    (i3-save-tree |sed -e's/^\s*\/\/\s[^\"].*//g' -e's/^\s*\/\///g' | \
+        jq '..|objects|select(.type=="con")|select(has("nodes")|not)'| \
+        jq -s '{layout:"splith","type":"con",nodes:[{"layout":"splitv",nodes:[.[0],.[1]]},{"layout":"splitv",nodes:[.[2],.[3]]}]}') > /tmp/layout
+else
+    (i3-save-tree |sed -e's/^\s*\/\/\s[^\"].*//g' -e's/^\s*\/\///g' | \
+        jq '..|objects|select(.type=="con")|select(has("nodes")|not)'| \
+        jq -s '{layout:"'$1'","type":"con",nodes:.}') > /tmp/layout
+fi
+
+windows="$(wmctrl -l|awk '{ if ($2 == "'$(wmctrl -d | awk '{ if ($2 == "'*'") print $1 }')'") print $1}')"
+i3-msg append_layout /tmp/layout
+for window in $windows; do
+	xdotool windowunmap $window
+    xdotool windowmap $window
+done
