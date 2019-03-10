@@ -145,7 +145,7 @@ bindsym $mod+r mode "resize"
 
 new_window none
 
-set_from_resource $wallpaper wallpaper /home/user/Pictures/wallhaven-9424.jpg
+set_from_resource $wallpaper wallpaper /home/user/mahoutsukai_[noise-L3].png
 
 # Volume Controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 3
@@ -157,7 +157,7 @@ bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Capture toggl
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioStop exec pkill mpv
+bindsym XF86AudioStop exec --no-startup-id pkill mpv
 
 # Launchers
 bindsym Control+mod4+a exec --no-startup-id pavucontrol
@@ -165,8 +165,7 @@ bindsym Control+mod4+e exec dolphin
 bindsym Control+mod4+f exec firefox
 bindsym Control+mod4+t exec --no-startup-id uxterm
 bindsym Control+mod4+k exec kate
-# bindsym Control+mod4+l exec --no-startup-id lock
-# bindsym Control+Shift+mod4+l exec --no-startup-id lock && sudo s2ram
+bindsym Control+mod4+v exec --no-startup-id toggle-voltra
 bindsym Control+mod4+s exec scrot
 bindsym Control+mod4+Shift+c exec --no-startup-id qshellctl reload
 bindsym Control+mod4+Shift+r exec --no-startup-id pkill -x qshell && qshell
@@ -203,9 +202,9 @@ for_window [class="Mainwindow.py"] floating enable
 for_window [class="Polybar"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Wine"] floating enable
+for_window [class="Voltra"] floating enable
+for_window [class="Voltra"] sticky enable
 for_window [class="qshell"] floating enable
-
-for_window [class="Vmplayer"] move container to workspace 0
 
 exec --no-startup-id numlockx
 exec --no-startup-id compton -b

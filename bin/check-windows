@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sleep 3s;
 i3-msg -t subscribe -m '[ "workspace", "window" ]' | while read line; do
     filter="$(echo "$line" | jq -r '((.change == "new" or .change == "close") and has("container")) or (.change == "focus" and has("current"))')"
     windows="$(wmctrl -l|awk '{ if ($2 == "'$(wmctrl -d | awk '{ if ($2 == "'*'") print $1 }')'") print $1}' | wc -l)"

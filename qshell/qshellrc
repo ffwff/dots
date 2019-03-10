@@ -2,45 +2,17 @@
 Type=Battery
 
 [BottomPanel]
+DisplayShadow=false
+AlwaysBottom=true
 Height=32px
-Width=1800px
-OffsetLeft=60px
 OffsetBottom=15px
+OffsetLeft=60px
 Position=3
 Transparent=true
-AlwaysBottom=true
 Type=Panel
 Widgets=Tasks,stretch,des1,des2,des3,des4,des5
-
-[des1]
-Type=Button
-Icon=/usr/share/icons/breeze-dark/actions/22/go-home.svg
-Size=16
-Click=i3-msg workspace 0
-
-[des2]
-Type=Button
-Icon=/usr/share/icons/breeze-dark/actions/22/code-context.svg
-Size=16
-Click=i3-msg workspace 1
-
-[des3]
-Type=Button
-Icon=/usr/share/icons/breeze-dark/apps/22/applications-internet.svg
-Size=16
-Click=i3-msg workspace 2
-
-[des4]
-Type=Button
-Icon=/usr/share/icons/breeze-dark/places/22/folder-videos.svg
-Size=16
-Click=i3-msg workspace 3
-
-[des5]
-Type=Button
-Icon=/usr/share/icons/breeze-dark/actions/16/dialog-messages.svg
-Size=17
-Click=i3-msg workspace 4
+Width=1800px
+StretchMask=true
 
 [DashButton]
 Size=60
@@ -66,19 +38,19 @@ Size=16
 Type=Button
 
 [InfoPanel]
+AlwaysTop=true
+BorderRadius=5
 Direction=2
 DisplayShadow=false
 Height=90
-OffsetTop=5
 OffsetRight=60px
-BorderRadius=5
+OffsetTop=5
 Position=2
 SlideDuration=120
 Struts=false
 Transparent=true
 Type=Panel
 Visible=false
-AlwaysTop=true
 Widgets=spacing=16,InfoPanel-script,stretch
 Width=25
 
@@ -86,6 +58,43 @@ Width=25
 Fifo=true
 LabelScript=/home/user/.config/qshell/infopanel.sh
 Type=Label
+
+[LayoutHorizontal]
+Click=change-layout splith
+Icon=/usr/share/icons/breeze-dark/actions/16/transform-move-horizontal.svg
+Size=16
+Type=Button
+
+[LayoutTab]
+Click=change-layout tabbed
+Icon=/usr/share/icons/breeze-dark/actions/16/tab-new.svg
+Size=16
+Type=Button
+
+[LayoutVertical]
+Click=change-layout splitv
+Icon=/usr/share/icons/breeze-dark/actions/16/transform-move-vertical.svg
+Size=16
+Type=Button
+
+[LayoutYon]
+Click=change-layout fourbox
+Icon=/usr/share/icons/breeze-dark/actions/16/format-border-set-internal-vertical.svg
+Size=16
+Type=Button
+
+[LeftPanel]
+DisplayShadow=false
+AlwaysBottom=true
+Direction=2
+Height=128px
+OffsetLeft=15px
+OffsetTop=60px
+Position=0
+Transparent=true
+Type=Panel
+Widgets=LayoutTab,LayoutVertical,LayoutHorizontal,LayoutYon
+Width=32px
 
 [Logout]
 Click=qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 1 3 3
@@ -106,10 +115,10 @@ Type=Network
 
 [Q::Dash]
 Height=70
+OffsetLeft=60
+OffsetTop=50
 Position=0
 Size=30
-OffsetTop=50
-OffsetLeft=60
 Width=40
 WmManage=false
 
@@ -120,44 +129,8 @@ Visible=false
 [Q::Shell]
 Panels=TopPanel,BottomPanel,LeftPanel,InfoPanel
 Stylesheet=qshell.css
-WmManagePanels=false
 WmManageDialogs=false
-
-[LeftPanel]
-Type=Panel
-Position=0
-Direction=2
-Width=32px
-Height=128px
-Widgets=LayoutTab,LayoutVertical,LayoutHorizontal,LayoutYon
-Transparent=true
-AlwaysBottom=true
-OffsetTop=60px
-OffsetLeft=15px
-
-[LayoutTab]
-Click=change-layout tabbed
-Icon=/usr/share/icons/breeze-dark/actions/16/tab-new.svg
-Size=16
-Type=Button
-
-[LayoutVertical]
-Click=change-layout splitv
-Icon=/usr/share/icons/breeze-dark/actions/16/transform-move-vertical.svg
-Size=16
-Type=Button
-
-[LayoutHorizontal]
-Click=change-layout splith
-Icon=/usr/share/icons/breeze-dark/actions/16/transform-move-horizontal.svg
-Size=16
-Type=Button
-
-[LayoutYon]
-Click=change-layout fourbox
-Icon=/usr/share/icons/breeze-dark/actions/16/format-border-set-internal-vertical.svg
-Size=16
-Type=Button
+WmManagePanels=false
 
 [Search]
 Click=krunner
@@ -172,20 +145,22 @@ Type=Systray
 [Tasks]
 ByDesktop=true
 Direction=0
-Pinned=Firefox,dolphin,discord
+Pinned=Firefox,dolphin
 Size=32
 Type=Tasks
 
 [TopPanel]
+DisplayShadow=false
+AlwaysBottom=true
 Height=2.5
-Width=1800px
 OffsetLeft=60px
 OffsetTop=20px
 Position=1
 Transparent=true
-AlwaysBottom=true
 Type=Panel
-Widgets=WinCtrl,stretch,Battery,Systray,MediaPlayer,Network,Volume,Date,Logout,Search,Hamburger
+Widgets=WinCtrl,stretch,Battery,Systray,Network,Volume,Date,Logout,Search,Hamburger
+Width=1800px
+StretchMask=true
 
 [Trash]
 Type=Trash
@@ -195,17 +170,47 @@ IconHigh=/home/user/.config/qshell/audio-volume-high.png
 IconLow=/home/user/.config/qshell/audio-volume-low.png
 IconMedium=/home/user/.config/qshell/audio-volume-medium.png
 IconMuted=/home/user/.config/qshell/audio-volume-muted.png
-Type=Volume
 ShowLabel=true
+Type=Volume
 
 [WinCtrl]
 Type=WindowControl
 
+[des1]
+Click=i3-msg workspace 0
+Icon=/usr/share/icons/breeze-dark/actions/22/go-home.svg
+Size=16
+Type=Button
+
+[des2]
+Click=i3-msg workspace 1
+Icon=/usr/share/icons/breeze-dark/actions/22/code-context.svg
+Size=16
+Type=Button
+
+[des3]
+Click=i3-msg workspace 2
+Icon=/usr/share/icons/breeze-dark/apps/22/applications-internet.svg
+Size=16
+Type=Button
+
+[des4]
+Click=i3-msg workspace 3
+Icon=/usr/share/icons/breeze-dark/places/22/folder-videos.svg
+Size=16
+Type=Button
+
+[des5]
+Click=i3-msg workspace 4
+Icon=/usr/share/icons/breeze-dark/actions/16/dialog-messages.svg
+Size=17
+Type=Button
+
 [discord]
-Class=discord
-Command=discord
-Icon=discord
-Type=Task
+Class[$d]
+Command[$d]
+Icon[$d]
+Type[$d]
 
 [dolphin]
 Class=dolphin
