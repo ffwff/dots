@@ -1,4 +1,4 @@
-PWD?=$(shell pwd)
+PWD ?= $(shell pwd)
 
 default: install refresh
 
